@@ -108,9 +108,11 @@ docker-compose exec backend npx sequelize-cli db:seed --seed 202411201956-create
 ---
 
 ### 上手くいかない場合は、全削除してから再度作成
+```powershell
 docker-compose exec backend npx sequelize-cli db:migrate:undo:all
 docker-compose exec backend npx sequelize-cli db:migrate
 docker-compose exec backend npx sequelize-cli db:seed --seed 202411201956-create-users2.js
+---
 
 
 ### ステップ4：アプリにアクセス
