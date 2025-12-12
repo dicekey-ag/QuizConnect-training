@@ -88,9 +88,9 @@ docker-compose P
 ```
 以下の3つがUPになっているか確認
 
-quizconnect-training-main-backend-1    quizconnect-training-main-backend    "docker-entrypoint.s…"   backend    4 minutes ago   Up 4 minutes   0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp
-quizconnect-training-main-db-1         mysql:8.0                            "docker-entrypoint.s…"   db         4 minutes ago   Up 4 minutes   0.0.0.0:3306->3306/tcp, [::]:3306->3306/tcp
-quizconnect-training-main-frontend-1   quizconnect-training-main-frontend   "docker-entrypoint.s…"   frontend   4 minutes ago   Up 4 minutes   0.0.0.0:3000->3000/tcp, [::]:3000->3000/tcp
+quizconnect-training-main-backend-1    Up 
+quizconnect-training-main-db-1         Up
+quizconnect-training-main-frontend-1   Up
 
 ### 3-3. データベースの初期設定
 
