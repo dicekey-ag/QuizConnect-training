@@ -98,19 +98,19 @@ quizconnect-training-main-frontend-1   Up
 
 以下のコマンドを順番に実行：
 powershell
-# マイグレーション（テーブル作成）
+### マイグレーション（テーブル作成）
 
-# 全データ削除＆再構築
+### 全データ削除＆再構築
 docker-compose exec backend npx sequelize-cli db:migrate
 docker-compose exec backend npx sequelize-cli db:seed --seed 202411201956-create-users2.js
 
-# 上手くいかない場合は、全削除してから再度作成
+### 上手くいかない場合は、全削除してから再度作成
 docker-compose exec backend npx sequelize-cli db:migrate:undo:all
 docker-compose exec backend npx sequelize-cli db:migrate
 docker-compose exec backend npx sequelize-cli db:seed --seed 202411201956-create-users2.js
 
 
-## ステップ4：アプリにアクセス
+### ステップ4：アプリにアクセス
 
 1. ブラウザ（Chrome推奨）を開く
 
@@ -120,7 +120,7 @@ docker-compose exec backend npx sequelize-cli db:seed --seed 202411201956-create
 3. ログイン画面が表示されればOK！
 
 
-## ステップ5：Docker Desktopで起動確認（GUI）
+### ステップ5：Docker Desktopで起動確認（GUI）
 
 ### 5-1. Docker Desktopを開く
 
@@ -139,7 +139,7 @@ docker-compose exec backend npx sequelize-cli db:seed --seed 202411201956-create
 - 「Logs」タブでエラーメッセージを確認
 
 
-## アプリの停止方法
+### アプリの停止方法
 
 ### 方法1：PowerShellで停止
 ```powershell
