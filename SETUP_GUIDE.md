@@ -109,20 +109,16 @@ docker-compose exec backend npx sequelize-cli db:migrate:undo:all
 docker-compose exec backend npx sequelize-cli db:migrate
 docker-compose exec backend npx sequelize-cli db:seed --seed 202411201956-create-users2.js
 
----
 
 ## ステップ4：アプリにアクセス
 
 1. ブラウザ（Chrome推奨）を開く
 
 2. 以下のURLにアクセス：
-```
    http://localhost:3000
-```
 
 3. ログイン画面が表示されればOK！
 
----
 
 ## ステップ5：Docker Desktopで起動確認（GUI）
 
@@ -142,7 +138,6 @@ docker-compose exec backend npx sequelize-cli db:seed --seed 202411201956-create
 - コンテナ名をクリック
 - 「Logs」タブでエラーメッセージを確認
 
----
 
 ## アプリの停止方法
 
@@ -157,4 +152,3 @@ docker-compose down
 2. 「Containers」タブ
 3. `quizconnect-training` の横にある「停止」ボタン（⏹）をクリック
 
----
