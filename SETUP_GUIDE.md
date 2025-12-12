@@ -103,9 +103,6 @@ powershell
 ### 全データ削除＆再構築
 ```powershell
 docker-compose exec backend npx sequelize-cli db:migrate
----
-
-```powershell
 
 docker-compose exec backend npx sequelize-cli db:seed --seed 202411201956-create-users2.js
 ---
