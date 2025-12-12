@@ -10,18 +10,21 @@ docker/mysql-data_v5/
 # Environment variables（すべてのパターンを明記）
 .env
 .env.*
-.env.development
+# .env.development
 .env.production
 .env.local
 .env.test
 backend/.env
 backend/.env.*
-frontend/.env
-frontend/.env.*
-frontend/.env.development
+# frontend/.env
+# frontend/.env.*
+# frontend/.env.development
 frontend/.env.production
 !.env.development.example
 !.env.production.example
+!.env.development         # ← 追加：研修用
+!frontend/.env.development # ← 追加
+
 
 # Logs
 logs/
