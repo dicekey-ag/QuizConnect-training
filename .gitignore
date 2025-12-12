@@ -8,7 +8,7 @@ docker/mysql-data
 docker/mysql-data_v5/
 
 # Environment variables（すべてのパターンを明記）
-.env
+# .env
 # .env.*
 # .env.development
 .env.production
