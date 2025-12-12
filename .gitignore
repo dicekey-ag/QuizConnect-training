@@ -1,0 +1,53 @@
+# Node modules
+node_modules
+/frontend/node_modules/
+/backend/node_modules/
+
+# Docker persistent data
+docker/mysql-data
+docker/mysql-data_v5/
+
+# Environment variables（すべてのパターンを明記）
+.env
+.env.*
+.env.development
+.env.production
+.env.local
+.env.test
+backend/.env
+backend/.env.*
+frontend/.env
+frontend/.env.*
+frontend/.env.development
+frontend/.env.production
+!.env.development.example
+!.env.production.example
+
+# Logs
+logs/
+*.log
+
+# Test coverage
+/frontend/coverage/
+/backend/coverage/
+
+# Uploads
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Test results
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

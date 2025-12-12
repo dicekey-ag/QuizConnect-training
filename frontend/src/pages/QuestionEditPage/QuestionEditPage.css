@@ -1,0 +1,79 @@
+.question-edit-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.question-edit-page h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-group textarea {
+  height: 120px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.choice-edit {
+  margin-bottom: 10px;
+}
+
+.choice-edit input[type="text"] {
+  width: 80%;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.choice-edit label {
+  display: inline-flex;
+  align-items: center;
+}
+
+.choice-edit input[type="checkbox"] {
+  margin-right: 5px;
+}

@@ -1,0 +1,170 @@
+.dashboard-page {
+  background-image: url('../../components/assets/images/高度.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  color: #333333;
+  font-size: 1.1rem;
+  /* 全体の文字サイズを大きく */
+}
+
+.dashboard-container {
+  width: 100%;
+  max-width: 1200px;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-content {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "overall radar"
+    "category-title category-title"
+    "category category";
+}
+
+.overall-progress {
+  grid-area: overall;
+  background-color: rgba(240, 248, 255, 0.8);
+  /* 全体の進捗の背景色を変更 */
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.radar-chart {
+  grid-area: radar;
+  background-color: rgba(240, 248, 255, 0.8);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.category-progress {
+  grid-area: category;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.category-progress h2 {
+  grid-area: category-title;
+  grid-column: 1 / -1;
+  margin-bottom: 1rem;
+}
+
+.category-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.radar-chart canvas {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 400px;
+}
+
+/* 章別の進捗のタイトルを上に配置 */
+.dashboard-section.category-progress {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-section.category-progress h2 {
+  margin-bottom: 1rem;
+}
+
+.category-items-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* ヘッダーとセクションタイトルのスタイルを調整 */
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+}
+
+.dashboard-header h1,
+.dashboard-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.dashboard-section h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.admin-link {
+  background-color: #4CAF50;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.admin-link:hover {
+  background-color: #45a049;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-content {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "overall"
+      "radar"
+      "category-title"
+      "category";
+  }
+
+  .category-items-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-page {
+    padding: 2rem 1rem;
+    padding-top: 8rem;
+  }
+
+  .dashboard-container {
+    padding: 1.5rem;
+  }
+
+  .category-items-container {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard-header h1 {
+    margin-bottom: 1rem;
+  }
+
+  .admin-link {
+    align-self: flex-start;
+  }
+}

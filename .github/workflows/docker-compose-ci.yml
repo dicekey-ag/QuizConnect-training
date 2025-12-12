@@ -1,0 +1,88 @@
+name: Docker Compose CI
+
+on:
+  # push:
+  #   branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    # env:
+    #   DB_HOST: db
+    #   DB_PORT: 3306
+    #   DB_NAME: quizconnect_test
+    #   DB_USER: root
+    #   DB_PASSWORD: rootpassword
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install Docker Compose
+      run: |
+        sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
+
+    - name: Create .env file
+      run: |
+        echo "DB_HOST=${{ secrets.DB_HOST }}" > ./.env
+        echo "DB_USER=${{ secrets.DB_USER }}" >> ./.env
+        echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> ./.env
+        echo "DB_NAME=${{ secrets.DB_NAME }}" >> ./.env
+        echo "DB_PORT=${{ secrets.DB_PORT }}" >> ./.env
+        echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> ./.env
+        echo "TEST_DB_NAME=${{ secrets.TEST_DB_NAME }}" >> ./.env
+        echo "NODE_ENV=test" >> ./.env
+        echo "MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }}" >> ./.env
+        
+    - name: Debug - Show .env file content (masked)
+      run: sed 's/=.*$/=****/' ./.env
+
+    - name: Debug - Show .env file content (unmasked)
+      run: cat ./.env  
+
+    - name: Build Docker images
+      run: docker-compose build
+
+    - name: Start Docker containers
+      run: docker-compose up -d
+
+    - name: Wait for database to be ready
+      run: |
+        docker-compose exec -T db sh -c 'while ! mysqladmin ping -h"localhost" --silent; do sleep 1; done'
+
+    - name: Create test database and run migrations
+      run: |
+        docker-compose exec -T db mysql -uroot -p${{ secrets.MYSQL_ROOT_PASSWORD }} -e "CREATE DATABASE IF NOT EXISTS ${{ secrets.TEST_DB_NAME }};"
+        docker-compose exec -T backend npx sequelize-cli db:migrate --env test
+
+    - name: Debug - Show database connection info
+      run: |
+        echo "Database Host: $DB_HOST"
+        echo "Database Port: $DB_PORT"
+        echo "Database Name: $DB_NAME"
+        echo "Database User: $DB_USER"
+        
+    - name: Check database connection
+      run: |
+        docker-compose exec -T backend mysql -h$DB_HOST -P$DB_PORT -u$DB_USER -p$DB_PASSWORD -e "SELECT 1;"
+
+    - name: Run backend tests
+      run: |
+        docker-compose exec -T backend sh -c 'NODE_ENV=test npm run test -- --verbose'
+        
+    - name: Display test results
+      if: always()
+      run: |
+        docker-compose exec -T backend cat coverage/lcov-report/index.html || true
+
+    - name: Upload test coverage
+      if: always()
+      uses: actions/upload-artifact@v2
+      with:
+        name: coverage-report
+        path: backend/coverage
+
+    - name: Stop containers
+      run: docker-compose down

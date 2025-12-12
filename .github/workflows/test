@@ -1,0 +1,206 @@
+name: QuizConnect CI
+
+# on:
+#   push:
+#     branches: [ main, develop ]
+#   pull_request:
+#     branches: [ main, develop ]
+
+env:
+  DB_HOST: db
+  DB_USER: ${{ secrets.DB_USER }}
+  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+  DB_NAME: ${{ secrets.DB_NAME }}
+  DB_PORT: 3306
+  JWT_SECRET: ${{ secrets.JWT_SECRET }}
+  TEST_DB_NAME: ${{ secrets.TEST_DB_NAME }}
+  TEST_DB_PORT: 3308
+  NODE_ENV: test
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Install Docker Compose
+      run: |
+        sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
+        docker-compose --version
+
+    - name: Create .env file
+      run: |
+        cat << EOF > backend/.env
+        DB_HOST=${DB_HOST}
+        DB_USER=${DB_USER}
+        DB_PASSWORD=${DB_PASSWORD}
+        DB_NAME=${TEST_DB_NAME}
+        DB_PORT=${DB_PORT}
+        JWT_SECRET=${JWT_SECRET}
+        TEST_DB_NAME=${TEST_DB_NAME}
+        NODE_ENV=${NODE_ENV}
+        EOF
+
+    - name: Debug - Check .env file
+      run: |
+        ls -la backend
+        cat backend/.env | sed 's/=.*/=*****/' # 値を隠して表示
+
+    - name: Debug - Environment variables
+      run: |
+        echo "DB_HOST: ${DB_HOST}"
+        echo "DB_USER: ${DB_USER}"
+        echo "DB_NAME: ${TEST_DB_NAME}"
+        echo "DB_PORT: ${DB_PORT}"
+        echo "TEST_DB_NAME: ${TEST_DB_NAME}"
+        echo "NODE_ENV: ${NODE_ENV}"
+
+    - name: Build and run Docker containers
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml build
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml --profile test up -d
+
+
+    - name: Check container status
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml ps
+
+    - name: Check container logs
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml logs
+
+    - name: Check Docker network
+      run: |
+        docker network ls
+        docker network inspect $(docker network ls --filter name=quizconnect -q)
+
+    - name: Wait for backend container
+      run: |
+        attempt_counter=0
+        max_attempts=30
+        until docker-compose -f docker-compose.yml -f docker-compose.test.yml exec -T backend echo "Backend is up"; do
+          if [ ${attempt_counter} -eq ${max_attempts} ];then
+            echo "Max attempts reached. Backend container is not ready."
+            exit 1
+          fi
+          printf '.'
+          attempt_counter=$(($attempt_counter+1))
+          sleep 5
+        done
+
+    - name: Check backend container file structure
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml exec -T backend ls -R /app
+
+    - name: Check backend environment
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml exec -T backend env
+
+    - name: Check backend environment
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml exec -T backend env
+
+    - name: Check database status
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml exec -T db mysqladmin -u${DB_USER} -p${DB_PASSWORD} status
+
+    - name: Check container log encoding
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml logs | file -
+
+    - name: Check Docker containers
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml ps
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml logs
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml config
+
+    - name: Check environment variables in Docker container
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml exec -T backend printenv
+
+    - name: Wait for MySQL
+      run: |
+        attempt_counter=0
+        max_attempts=30
+        until docker-compose -f docker-compose.yml -f docker-compose.test.yml exec -T db mysqladmin ping -h"localhost" -u"${DB_USER}" -p"${DB_PASSWORD}" --silent; do
+          if [ ${attempt_counter} -eq ${max_attempts} ];then
+            echo "Max attempts reached. MySQL is unavailable."
+            exit 1
+          fi
+          printf '.'
+          attempt_counter=$(($attempt_counter+1))
+          sleep 5
+        done
+
+    - name: Check Sequelize CLI config
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml exec -T backend cat /app/.sequelizerc
+
+    - name: Check migration files
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml exec -T backend ls -l /app/migrations
+
+    - name: Check database state before migration
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml exec -T db mysql -u${DB_USER} -p${DB_PASSWORD} -e "SHOW DATABASES; USE ${TEST_DB_NAME}; SHOW TABLES;"
+
+    - name: Run migrations
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml exec -T backend npx sequelize-cli db:migrate --verbose
+
+    - name: Check database connection
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml exec -T backend \
+        node -e "
+        const mysql = require('mysql2/promise');
+        const connection = mysql.createConnection({
+          host: process.env.DB_HOST,
+          user: process.env.DB_USER,
+          password: process.env.DB_PASSWORD,
+          database: process.env.TEST_DB_NAME,
+          port: process.env.DB_PORT
+        });
+        connection.then(conn => {
+          console.log('Connection successful');
+          return conn.query('SHOW TABLES;');
+        }).then(([rows]) => {
+          console.log('Tables:', rows);
+          process.exit(0);
+        }).catch(err => {
+          console.error('Connection failed:', err);
+          process.exit(1);
+        });"
+
+    - name: Check Sequelize configuration
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml exec -T backend \
+        node -e "
+        const sequelize = require('./config/database');
+        console.log('Sequelize configuration:', sequelize.config);
+        sequelize.authenticate()
+          .then(() => {
+            console.log('Sequelize connection successful');
+            process.exit(0);
+          })
+          .catch(err => {
+            console.error('Sequelize connection failed:', err);
+            process.exit(1);
+          });"
+
+    - name: Run tests
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml exec -T backend npm test
+
+    - name: Display Docker logs
+      if: failure()
+      run: |
+        docker-compose -f docker-compose.yml -f docker-compose.test.yml logs
+
+    - name: Stop containers
+      if: always()
+      run: docker-compose -f docker-compose.yml -f docker-compose.test.yml down

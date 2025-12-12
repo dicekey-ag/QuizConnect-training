@@ -1,0 +1,237 @@
+.main-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  width: 100%;
+  position: relative;
+  /* 追加 */
+}
+
+.main-visual-content {
+  max-width: 800px;
+  padding: 4rem 2rem;
+  background-color: rgba(0, 0, 0, 0.075);
+  border-radius: 10px;
+  margin: 0;
+}
+
+.main-visual h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.144);
+}
+
+.main-visual p {
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.main-visual-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
+.btn-secondary {
+  background-color: #28a745;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover {
+  background-color: #218838;
+  transform: translateY(-3px);
+}
+
+@media screen and (max-width: 768px) {
+  .main-visual {
+    background-attachment: scroll;
+  }
+
+  .main-visual h1 {
+    font-size: 2.5rem;
+  }
+
+  .main-visual p {
+    font-size: 1.1rem;
+  }
+
+  .main-visual-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+/* MainVisual.css に追加するスタイル */
+.info-slider {
+  position: relative;
+  width: 100%;
+  margin-bottom: 2rem;
+  max-width: 500px;
+  /* 最大幅を設定 */
+  margin: 2rem auto;
+  /* 中央寄せ */
+}
+
+
+.info-banner {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: opacity 0.3s ease;
+  margin-top: 0.5rem;
+  /* ドットのための上部スペース確保 */
+}
+
+.info-badge {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  background-color: #ff4444;
+  color: white;
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.info-date {
+  padding: 0.15rem 0.6rem;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.info-text {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin: 0.5rem 0;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  /* position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2; */
+  margin: 0.5rem 0;
+}
+
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 8px;
+  margin: 0 4px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.dot:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+  /* ホバー時に少し大きく */
+}
+
+.dot.active {
+  background-color: #ffffff;
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  /* アクティブ時に光る効果 */
+}
+
+
+.access-notice {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0.7rem;
+  border-radius: 8px;
+  margin: 1.4rem auto;
+  text-align: center;
+  color: #333;
+  max-width: 400px;
+}
+
+.access-notice .notice-text {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin: 0;
+  color: #333;
+}
+
+@media screen and (max-width: 768px) {
+  .access-notice {
+    max-width: 90%;
+    padding: 0.6rem;
+  }
+
+  .access-notice .notice-text {
+    font-size: 0.8rem;
+  }
+
+  .info-slider {
+    max-width: 90%;
+  }
+
+  .info-text {
+    font-size: 0.8rem;
+  }
+
+  .info-banner {
+    padding: 1.2rem;
+  }
+}
+
+
+@media screen and (max-width: 1024px) {
+  .access-notice {
+    position: static;
+    /* 小さい画面では元の位置に戻す */
+    width: 100%;
+    margin-top: 2rem;
+    transform: none;
+  }
+}

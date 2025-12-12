@@ -1,0 +1,8 @@
+.register-page {
+  background-size: cover;
+  background-position: top;
+  /* ヘッダーとフッターの高さが合計100pxと仮定 */
+  min-height: calc(100vh - 100px);
+  /* 中央に寄せる */
+  padding: 5rem;
+}

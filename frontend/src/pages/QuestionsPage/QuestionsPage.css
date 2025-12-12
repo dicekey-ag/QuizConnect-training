@@ -1,0 +1,514 @@
+.question-page {
+  background-image: url('../../components/assets/images/洋風内装.png');
+  background-size: cover;
+  background-position: top;
+  background-attachment: fixed;
+  /* 背景画像を固定 */
+  flex: 1;
+  min-height: 100%;
+  position: relative;
+  padding: 5rem 2rem 2rem;
+  /* 上部のパディングを増やして調整 */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* 追加: 外側のスクロールを防ぐ */
+}
+
+.question-page h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  color: #f5ecec;
+  /* ややグレーの白色 */
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8), 2px 2px 10px rgba(0, 0, 0, 0.5);
+  /* 細かい黒の影とぼかしを追加 */
+}
+
+.question-page-title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.question-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 0;
+  /* flexboxのスクロール用 */
+}
+
+.question-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.8);
+  /* 背景色に透明度を設定 */
+  padding: 1rem;
+  border-radius: 8px;
+  -webkit-overflow-scrolling: touch;
+  /* iOSのスムーズスクロール */
+  padding-right: 1rem;
+  /* スクロールバーのスペース確保 */
+}
+
+.question-title {
+  flex-basis: 20%;
+  /* 20%のスペースを確保 */
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.question-details {
+  display: flex;
+  flex-basis: 50%;
+  /* 50%のスペースを確保 */
+  justify-content: space-around;
+}
+
+.question-details p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.question-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.question-edit-btn,
+.question-delete-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+.question-edit-btn {
+  background-color: #4CAF50;
+  /* 編集ボタンは緑色 */
+  color: white;
+}
+
+.question-delete-btn {
+  background-color: #f44336;
+  /* 削除ボタンは赤色 */
+  color: white;
+}
+
+.search-form {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  /* 折り返しを許可 */
+}
+
+.search-form select,
+.search-form button {
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.search-form button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.search-form button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+
+
+.question- {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #f5ecec;
+  /* ややグレーの白色 */
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8), 2px 2px 10px rgba(0, 0, 0, 0.5);
+  /* 細かい黒の影とぼかしを追加 */
+
+}
+
+.question-status {
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 15px;
+  text-align: center;
+  min-width: 80px;
+}
+
+.status-correct {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.status-incorrect {
+  background-color: #f44336;
+  color: white;
+}
+
+.status-unattempted {
+  background-color: #FFA500;
+  color: white;
+}
+
+.question-details {
+  display: flex;
+  flex-basis: 50%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* 既存のスタイルの最後に以下を追加 */
+
+.question-start-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.question-start-btn:hover {
+  background-color: #0056b3;
+}
+
+
+/* レスポンシブデザインの調整 */
+@media (max-width: 768px) {
+
+  .question-details {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .question-details p {
+    margin-bottom: 0.5rem;
+    flex-basis: 100%;
+    /* 1列レイアウトに変更 */
+  }
+
+  .question-start-btn {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    width: 100%;
+    /* ボタンを幅いっぱいに */
+    text-align: center;
+    /* テキストを中央揃え */
+  }
+
+  .question-actions {
+    flex-direction: column;
+    /* ボタンを縦並びに */
+    width: 100%;
+    /* 幅いっぱいに */
+  }
+
+  .question-edit-btn,
+  .question-delete-btn {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    width: 100%;
+    /* ボタンを幅いっぱいに */
+    margin-top: 0.5rem;
+    /* ボタン間のマージン */
+  }
+}
+
+.no-results {
+  text-align: center;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.no-results p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .question-page {
+    padding: 4rem 1rem 1rem;
+  }
+
+  .question-item {
+    padding: 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .question-list {
+    max-height: calc(100vh - 250px);
+    /* ヘッダーとフォーム領域を考慮 */
+    overflow-y: auto;
+    margin-bottom: 2rem;
+  }
+
+  /* スクロールバーのスタイリング */
+  .question-list::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .question-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+
+  .question-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-form {
+    flex-direction: column;
+  }
+
+  .search-form select,
+  .search-form button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .question-list {
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+}
+
+.search-form button {
+  margin-left: 10px;
+}
+
+/* 既存のスタイルに追加 */
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+}
+
+.pagination-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.pagination-button.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.pagination-button:disabled {
+  background-color: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  text-align: center;
+  color: #ffffff;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 768px) {
+  .pagination-controls {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .pagination-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+.random-select-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-left: auto;
+}
+
+.random-select-controls select {
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.random-select-controls button {
+  padding: 5px 15px;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.random-select-controls button:hover {
+  background-color: #0056b3;
+}
+
+.highlight-question {
+  animation: highlight-pulse 0.7s ease-in-out 2;
+  /* 3回点滅 */
+  border: 2px solid #4299e1;
+  box-shadow: 0 0 15px rgba(66, 153, 225, 0.3);
+}
+
+
+@keyframes highlight-fade {
+  0% {
+    background-color: rgba(66, 153, 225, 0.3);
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* 改善したハイライト効果 */
+@keyframes highlight-pulse {
+  0% {
+    background-color: rgba(66, 153, 225, 0.5);
+    transform: scale(1);
+  }
+
+  50% {
+    background-color: rgba(66, 153, 225, 0.7);
+    transform: scale(1.02);
+  }
+
+  100% {
+    background-color: rgba(66, 153, 225, 0.5);
+    transform: scale(1);
+  }
+}
+
+.question-item {
+  position: relative;
+  transition: background-color 0.3s ease;
+  scroll-margin-top: 25vh;
+  /* スクロール位置の調整 */
+}
+
+/* QuestionDetailPage.cssに追加 */
+/* 下部ナビゲーションの改善 */
+.bottom-navigation {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  /* 解説との間隔を確保 */
+  margin-bottom: 2rem;
+}
+
+/* 小さめボタンのスタイル調整 */
+.nav-button.small,
+.back-button.small {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  /* ホバー時の動きを少し控えめに */
+  transform-origin: center;
+}
+
+.nav-button.small:hover,
+.back-button.small:hover {
+  transform: translateY(-1px);
+}
+
+/* モバイル対応の強化 */
+@media (max-width: 768px) {
+  .bottom-navigation {
+    /* スクロール時の固定表示 */
+    position: sticky;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    padding: 0.8rem;
+    margin: 0;
+    /* 影をつけて浮いて見せる */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+
+  /* モバイルでの配置調整 */
+  .nav-button.small,
+  .back-button.small {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+    min-width: 60px;
+  }
+
+  /* 解説エリアの下部マージンを確保 */
+  .explanation {
+    margin-bottom: 4rem;
+  }
+}
+
+
+/* QuestionsPage.css に追加 */
+.search-form button.active {
+  background-color: #dc3545;
+  /* 赤系の色 */
+}
+
+.search-form button.active:hover {
+  background-color: #c82333;
+  /* ホバー時の濃い赤 */
+}
+
+.random-select-controls button.active {
+  background-color: #dc3545;
+}
+
+.random-select-controls button.active:hover {
+  background-color: #c82333;
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+  text-align: center;
+}

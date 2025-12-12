@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bcd0b1e9.css",
+    "main.js": "/static/js/main.4111a951.js",
+    "static/media/図書館.png": "/static/media/図書館.e2a124a33ca1fe8dcd52.png",
+    "static/media/バルコニー.png": "/static/media/バルコニー.110a0bd9f61b28b23038.png",
+    "static/media/高度.png": "/static/media/高度.def82c9c57c0b7f4fd7c.png",
+    "static/media/洋風内装.png": "/static/media/洋風内装.cacfa829ad1e1f2a4200.png",
+    "static/media/空と桜.png": "/static/media/空と桜.0ea6bd27eeee7de76784.png",
+    "index.html": "/index.html",
+    "main.bcd0b1e9.css.map": "/static/css/main.bcd0b1e9.css.map",
+    "main.4111a951.js.map": "/static/js/main.4111a951.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bcd0b1e9.css",
+    "static/js/main.4111a951.js"
+  ]
+}

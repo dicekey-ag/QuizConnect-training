@@ -1,0 +1,143 @@
+.question-create-page {
+  background-size: cover;
+  background-position: top;
+  min-height: calc(100vh - 100px);
+  padding: 5rem;
+}
+
+.question-create-page h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.question-create-page h2 {
+  font-size: 20px;
+  margin: 2rem 0 1rem;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-group textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+/* 画像アップロード関連のスタイル */
+.form-group input[type="file"] {
+  padding: 8px;
+  background-color: #f8f9fa;
+  border: 1px dashed #ccc;
+  cursor: pointer;
+}
+
+.form-group input[type="file"]:hover {
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+}
+
+/* 画像プレビュー関連のスタイル */
+.image-preview {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+}
+
+.image-preview img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.image-preview {
+  position: relative;
+  margin-top: 10px;
+}
+
+.image-delete-button {
+  margin-top: 5px;
+  padding: 5px 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.image-delete-button:hover {
+  background-color: #c82333;
+}
+
+/* CSVアップロードフォーム */
+.csv-upload-form {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+}
+
+.error {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+button[type='submit'] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button[type='submit']:hover {
+  background-color: #0056b3;
+}
+
+/* 選択肢フォーム */
+.choices-container {
+  margin-top: 1rem;
+}
+
+.choice-input {
+  margin-bottom: 10px;
+}
+
+.choice-input input {
+  margin-right: 10px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .question-create-page {
+    padding: 2rem;
+  }
+
+  .image-preview img {
+    max-width: 100%;
+  }
+}

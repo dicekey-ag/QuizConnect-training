@@ -1,0 +1,66 @@
+/* トップページのコンテナ */
+.top-page {
+  min-height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  background-image: url('../../components/assets/images/図書館.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* セクション */
+.top-page section {
+  margin-bottom: 4rem;
+}
+
+/* 見出し */
+.top-page h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* 特徴セクション */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.feature {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.feature img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1rem;
+}
+
+/* ステップセクション */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.step {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.step img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+}

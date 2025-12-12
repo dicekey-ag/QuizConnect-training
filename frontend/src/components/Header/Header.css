@@ -1,0 +1,100 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #052649;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.logo a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.navigation ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation li {
+  margin-left: 1.5rem;
+}
+
+.navigation a,
+.navigation button {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.navigation a:hover,
+.navigation button:hover {
+  color: #f0f0f0;
+}
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    flex-wrap: nowrap;
+  }
+
+  .navigation {
+    position: fixed;
+    top: 60px;
+    /* ヘッダーの高さに応じて調整 */
+    left: 0;
+    right: 0;
+    background-color: #052649;
+    padding: 1rem;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%);
+    max-height: calc(100vh - 60px);
+    /* ビューポートの高さからヘッダーの高さを引いた値 */
+    overflow-y: auto;
+    /* 念のため、コンテンツが増えた場合にスクロール可能にしておく */
+  }
+
+  .navigation.open {
+    transform: translateX(0);
+  }
+
+  .navigation ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navigation li {
+    margin: 0.5rem 0;
+    width: 100%;
+  }
+
+  .menu-toggle {
+    display: block;
+    order: 2;
+  }
+}
+
+body {
+  padding-top: 60px;
+  /* ヘッダーの高さに応じて調整 */
+}

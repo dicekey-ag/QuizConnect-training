@@ -1,0 +1,194 @@
+        category: JSTQB
+        subcategory: FL
+        title: '概要',
+        statement: '問題: ソフトウェア開発においてテストが必要な主な理由は何ですか？',
+        difficulty: 'K2',
+        access_level: 'unauthorized',
+        explanation: '解説: テストは欠陥を早期に検出し、修正することでソフトウェアの品質を保証し、最終的な製品の信頼性を高めるために不可欠です。'
+        choice_text: 'A. プロジェクトの進行を加速するため',
+        choice_text: 'B. 開発コストを削減するため',
+        choice_text: 'C. 欠陥を早期に検出し、修正するため',
+        choice_text: 'D. プログラミングスキルを向上させるため',
+        正解: 'C'
+
+
+        category: JSTQB
+        subcategory: FL
+        title: '概要2',
+        statement: '問題: ソフトウェア開発においてテストが必要な主な理由は何ですか？',
+        difficulty: 'K2',
+        access_level: 'unauthorized',
+        explanation: '解説: テストは欠陥を早期に検出し、修正することでソフトウェアの品質を保証し、最終的な製品の信頼性を高めるために不可欠です。'
+        choice_text: 'A. プロジェクトの進行を加速するため',
+        choice_text: 'B. 開発コストを削減するため',
+        choice_text: 'C. 欠陥を早期に検出し、修正するため',
+        choice_text: 'D. プログラミングスキルを向上させるため',
+        正解: 'C'
+
+
+
+
+      {
+        category: JSTQB
+
+        category_id: 1,
+        subcategory_id: 2,
+        title: 'FL問題2',
+        statement: '問題: テストプロセスが開発サイクルにおいて果たす役割は何ですか？',
+        difficulty: 'medium',
+        access_level: 'unauthorized',
+        explanation: '解説: テストプロセスは、ソフトウェアの欠陥を特定し、修正することにより、製品の品質を向上させ、ユーザーの満足度を確保します。',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+
+
+
+
+今回使いたいカテゴリとサブカテゴリは以下になります。
+
+カテゴリは以下の6つ
+JSTQB-FL1章, JSTQB-FL2章, JSTQB-FL3章, JSTQB-FL4章, JSTQB-FL5章, JSTQB-FL6章
+
+サブカテゴリは以下の数字です。
+JSTQB-FL1章に対して
+1.1.1, 1.1.2, 1.2.1, 1.2.2, 1.2.3, 1.3.1, 1.4.1, 1.4.2, 1.4.3, 1.4.4, 1.4.5, 1.5.1, 1.5.2, 1.5.3
+JSTQB-FL2章に対して
+2.1.1, 2.1.2, 2.1.3, 2.1.4, 2.1.5, 2.1.6, 2.2.1, 2.2.2, 2.2.3, 
+JSTQB-FL3章に対して
+3.1.1, 3.1.2, 3.1.3, 3.2.1, 3.2.2, 3.2.3, 3.2.4, 3.2.5, 
+JSTQB-FL4章に対して
+4.1.1, 4.2.1, 4.2.2, 4.2.3, 4.2.4, 4.3.1, 4.3.2, 4.3.3, 4.4.1, 4.4.2, 4.4.3, 4.5.1, 4.5.2, 4.5.3, 
+JSTQB-FL5章に対して
+5.1.1, 5.1.2, 5.1.3, 5.1.4, 5.1.5, 5.1.6, 5.1.7, 5.2.1, 5.2.2, 5.2.3, 5.2.4, 5.3.1, 5.3.2, 5.3.3, 
+JSTQB-FL6章に対して
+6.1.1, 6.2.1
+
+
+次は問題の作成を14問をお願いします。
+上記でカテゴリやサブカテゴリは定義済みななので問題作成部分のみのコードにしてください。
+
+1問から順にカテゴリはJSTQB-FL1章、サブカテゴリ1.1.1にしてください。
+2問目はカテゴリはJSTQB-FL1章、サブカテゴリは1.1.2にしてください。
+この流れでサブカテゴリを1.1.1～1.5.3まで15問を作成。
+
+問題のほかのカラムについて
+titleやstatementはAAA、BBB、CCCなどでアルファベットの文字列を順番に入れてください。
+difficultyはK1、K2、K3、k1、K2、K3などの順番でサイクルしていれてください。
+access_level: 'unauthorized'で統一
+explanationもAAA、BBB、CCCなどでアルファベットの文字列を順番に入れてください。
+
+大事なのは後から文字を修正するので、関数処理や繰り返し処理などを使わずに
+1問ずつ問題を作成してください。
+
+
+
+この流れでまずは14問の作成をお願いします。
+
+
+上記の流れで次は問題の作成を各章ごとにお願いします。
+カテゴリやサブカテゴリは定義済みななので問題作成部分のみのコードにしてください。
+
+順にカテゴリはJSTQB-FL2章、サブカテゴリ2.1.1～2.2.3までを作成
+次にJSTQB-FL3章、サブカテゴリ3.1.1～3.2.5までを作成
+次にJSTQB-FL4章、サブカテゴリ4.1.1～4.5.3までを作成
+次にJSTQB-FL5章、サブカテゴリ5.1.1～5.3.3までを作成
+次にJSTQB-FL6章、サブカテゴリ6.1.1～6.2.1までを作成
+
+
+問題のほかのカラムについて
+titleやstatementはAAA、BBB、CCCなど適当な文字列で構わないです。
+difficultyはK1、K2、K3、k1、K2、K3などの順番でサイクルしていれていってください。。
+access_level: 'unauthorized'で統一
+explanationもAAA、BBB、CCCなど適当な文字列でいいです。
+
+この流れでまずは14問の作成をお願いします。
+
+
+＝＝＝＝
+添付のシーダーファイルは関数などで効率的に処理されていますが
+今後、問題など鼓膜徴するために、１つずつ作成してください。
+
+カテゴリは以下の6つ
+JSTQB-FL1章, JSTQB-FL2章, JSTQB-FL3章, JSTQB-FL4章, JSTQB-FL5章, JSTQB-FL6章
+
+サブカテゴリは以下の数字です。
+JSTQB-FL1章に対して
+1.1.1, 1.1.2, 1.2.1, 1.2.2, 1.2.3, 1.3.1, 1.4.1, 1.4.2, 1.4.3, 1.4.4, 1.4.5, 1.5.1, 1.5.2, 1.5.3
+JSTQB-FL2章に対して
+2.1.1, 2.1.2, 2.1.3, 2.1.4, 2.1.5, 2.1.6, 2.2.1, 2.2.2, 2.2.3, 
+JSTQB-FL3章に対して
+3.1.1, 3.1.2, 3.1.3, 3.2.1, 3.2.2, 3.2.3, 3.2.4, 3.2.5, 
+JSTQB-FL4章に対して
+4.1.1, 4.2.1, 4.2.2, 4.2.3, 4.2.4, 4.3.1, 4.3.2, 4.3.3, 4.4.1, 4.4.2, 4.4.3, 4.5.1, 4.5.2, 4.5.3, 
+JSTQB-FL5章に対して
+5.1.1, 5.1.2, 5.1.3, 5.1.4, 5.1.5, 5.1.6, 5.1.7, 5.2.1, 5.2.2, 5.2.3, 5.2.4, 5.3.1, 5.3.2, 5.3.3, 
+JSTQB-FL6章に対して
+6.1.1, 6.2.1
+
+カテゴリやサブカテゴリは定義済みななので問題作成部分のみのコードを作ってください。
+
+1問から順にカテゴリはJSTQB-FL1章、サブカテゴリ1.1.1にしてください。
+2問目はカテゴリはJSTQB-FL1章、サブカテゴリは1.1.2にしてください。
+この流れでサブカテゴリを1.1.1～1.5.3まで15問を作成。
+順にカテゴリはJSTQB-FL2章、サブカテゴリ2.1.1～2.2.3までを作成
+次にJSTQB-FL3章、サブカテゴリ3.1.1～3.2.5までを作成
+次にJSTQB-FL4章、サブカテゴリ4.1.1～4.5.3までを作成
+次にJSTQB-FL5章、サブカテゴリ5.1.1～5.3.3までを作成
+次にJSTQB-FL6章、サブカテゴリ6.1.1～6.2.1までを作成
+
+
+問題のほかのカラムについて
+titleやstatementはAAA、BBB、CCCなどでアルファベットの文字列を順番に入れてください。
+difficultyはK1、K2、K3、k1、K2、K3などの順番でサイクルしていれてください。
+access_level: 'unauthorized'で統一
+explanationもAAA、BBB、CCCなどでアルファベットの文字列を順番に入れてください。
+
+大事なのは後から文字を修正するので、関数処理や繰り返し処理などを使わずに
+1問ずつ問題を作成してください。
+
+次に、上記で作成した問題数と同じ選択肢と正解を作成してください。
+
+    // 挿入された問題のIDを取得
+    const questions = await queryInterface.sequelize.query(
+      "SELECT id FROM Questions",
+      { type: queryInterface.sequelize.QueryTypes.SELECT }
+    );
+
+    // 選択肢の挿入
+    await queryInterface.bulkInsert('question_choices', [
+      // JSTQB-FL1章 1.1.1
+      {
+        question_id: questions[0].id,
+        choice_text: 'AAA',
+        is_correct: true,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        question_id: questions[0].id,
+        choice_text: 'BBB',
+        is_correct: false,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        question_id: questions[0].id,
+        choice_text: 'CCC',
+        is_correct: false,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        question_id: questions[0].id,
+        choice_text: 'DDD',
+        is_correct: false,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+
+
+のように作成してください。
+選択肢はAAA、BBB、CCC、DDDでいいです。
+正解も最初をtrueにしてください。
+重要なのは、あとから問題作成や選択肢を調整するので1問ずつ選択肢を正解を作成する事です。

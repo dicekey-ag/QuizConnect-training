@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    depends_on:
+      - db
+    environment:
+      - NODE_ENV=test
+      - DB_HOST=db
+      - DB_USER=qc_user
+      - DB_PASSWORD=qc_pass
+      - DB_NAME=quizconnect_test
+      - DB_PORT=3306
+      - JWT_SECRET=1c249a14bb0327f4d97c380220b166cf3dcd3fa5b9a8b7d5ddb44550f852a3fb
+      - DOTENV_CONFIG_PATH=/app/.env
+    command: sh -c "npm run test"
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: quizconnect_test
+      MYSQL_USER: qc_user
+      MYSQL_PASSWORD: qc_pass
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uqc_user", "-pqc_pass"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
