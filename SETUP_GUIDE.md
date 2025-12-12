@@ -87,11 +87,12 @@ docker-compose up -d
 docker-compose P
 ```
 以下の3つがUPになっているか確認
-```
-quizconnect-training-main-backend-1    Up 
+
+quizconnect-training-main-backend-1    Up
+
 quizconnect-training-main-db-1         Up
+
 quizconnect-training-main-frontend-1   Up
-```
 
 ### 3-3. データベースの初期設定
 
