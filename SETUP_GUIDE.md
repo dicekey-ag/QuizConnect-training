@@ -97,7 +97,7 @@ quizconnect-training-main-frontend-1   Up
 ### 3-3. データベースの初期設定
 
 以下のコマンドを順番に実行：
-```powershell
+powershell
 # マイグレーション（テーブル作成）
 
 # 全データ削除＆再構築
