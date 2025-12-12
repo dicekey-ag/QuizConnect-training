@@ -1,3 +1,5 @@
+Markdown
+
 ## 必要なもの
 
 - Windows PC（Windows 10/11）
@@ -5,12 +7,12 @@
 - 管理者権限
 
 ## ステップ1：Docker Desktopのインストール
+
 ### 1-1. Docker Desktopをダウンロード
 
 1. 以下のURLにアクセス：
-```
-   https://www.docker.com/products/docker-desktop/
-```
+https://www.docker.com/products/docker-desktop/
+
 
 2. 「Download for Windows(AMD64) 」ボタンをクリック
 
@@ -40,9 +42,8 @@
 ### 2-1. GitHubからダウンロード
 
 1. 以下のURLにアクセス：
-```
-   https://github.com/dicekey-ag/QuizConnect-training
-```
+https://github.com/dicekey-ag/QuizConnect-training
+
 2. 緑色の「Code」ボタンをクリック
 
 3. 「Download ZIP」をクリック
@@ -70,90 +71,83 @@
 1. `QuizConnect-training-main` フォルダを選択して「右クリック」
 
 2. 「PowerShellウィンドウをここで開く」をクリック
-   - または「ターミナルで開く」でもOK
+- または「ターミナルで開く」でもOK
 
 ### 3-2. Dockerで起動
 
 PowerShellに以下をコピー＆貼り付けて Enter：
+
 ```powershell
 docker-compose up -d
-```
+初回は時間がかかります（5-10分）
 
-**初回は時間がかかります（5-10分）**
-- イメージのダウンロードが始まります
-- 「done」と表示されるまで待ちます
+イメージのダウンロードが始まります
 
-```powershell
-docker-compose P
-```
-以下の3つがUPになっているか確認
+「done」と表示されるまで待ちます
+
+起動状態を確認します：
+
+PowerShell
+
+docker-compose ps
+以下の3つがUPになっているか確認してください：
+
+Plaintext
 
 quizconnect-training-main-backend-1    Up
-
 quizconnect-training-main-db-1         Up
-
 quizconnect-training-main-frontend-1   Up
+3-3. データベースの初期設定
+以下のコマンドを順番に実行してください。
 
-### 3-3. データベースの初期設定
+マイグレーション（テーブル作成）とシード実行
+PowerShell
 
-以下のコマンドを順番に実行：
-powershell
-### マイグレーション（テーブル作成）
-
-### 全データ削除＆再構築
-```powershell
 docker-compose exec backend npx sequelize-cli db:migrate
-
 docker-compose exec backend npx sequelize-cli db:seed --seed 202411201956-create-users2.js
----
+上手くいかない場合（全削除してから再度作成）
+エラーが出た場合は、以下の手順で一度リセットしてから再実行してください。
 
-### 上手くいかない場合は、全削除してから再度作成
-```powershell
+PowerShell
+
 docker-compose exec backend npx sequelize-cli db:migrate:undo:all
 docker-compose exec backend npx sequelize-cli db:migrate
 docker-compose exec backend npx sequelize-cli db:seed --seed 202411201956-create-users2.js
----
+ステップ4：アプリにアクセス
+ブラウザ（Chrome推奨）を開く
 
+以下のURLにアクセス：
 
-### ステップ4：アプリにアクセス
+http://localhost:3000
+ログイン画面が表示されればOK！
 
-1. ブラウザ（Chrome推奨）を開く
+ステップ5：Docker Desktopで起動確認（GUI）
+5-1. Docker Desktopを開く
+Docker Desktopのアイコンをクリック
 
-2. 以下のURLにアクセス：
-   http://localhost:3000
+左メニューの「Containers」をクリック
 
-3. ログイン画面が表示されればOK！
+以下の3つのコンテナが「Running」になっていればOK：
 
+✅ quizconnect-training-frontend
 
-### ステップ5：Docker Desktopで起動確認（GUI）
+✅ quizconnect-training-backend
 
-### 5-1. Docker Desktopを開く
+✅ quizconnect-training-db
 
-1. Docker Desktopのアイコンをクリック
+5-2. ログを確認（トラブルシューティング）
+コンテナ名をクリック
 
-2. 左メニューの「Containers」をクリック
+「Logs」タブでエラーメッセージを確認
 
-3. 以下の3つのコンテナが「Running」になっていればOK：
-   - ✅ `quizconnect-training-frontend`
-   - ✅ `quizconnect-training-backend`
-   - ✅ `quizconnect-training-db`
+アプリの停止方法
+方法1：PowerShellで停止
+PowerShell
 
-### 5-2. ログを確認（トラブルシューティング）
-
-- コンテナ名をクリック
-- 「Logs」タブでエラーメッセージを確認
-
-
-### アプリの停止方法
-
-### 方法1：PowerShellで停止
-```powershell
 docker-compose down
-```
+方法2：Docker Desktop GUIで停止
+Docker Desktopを開く
 
-### 方法2：Docker Desktop GUIで停止
+「Containers」タブ
 
-1. Docker Desktopを開く
-2. 「Containers」タブ
-3. `quizconnect-training` の横にある「停止」ボタン（⏹）をクリック
-
+quizconnect-training の横にある「停止」ボタン（⏹）をクリック
